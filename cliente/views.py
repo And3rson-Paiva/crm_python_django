@@ -3,6 +3,13 @@ from django.views.generic import CreateView
 from django.views.generic import ListView
 from .models import Cliente
 from .forms import ClienteForm
+from django.urls import reverse
+
+
+class ClienteListView(ListView):
+    template_name = "cliente/cliente_list.html"
+    model = Cliente
+    queryset = Cliente.objects.all()
 
 
 class ClienteCreateView(CreateView):
@@ -12,9 +19,5 @@ class ClienteCreateView(CreateView):
     def form_valid(self, form):
         return super().form_valid(form)
 
-
-class ClienteListView(ListView):
-    template_name = "cliente/cliente_list.html"
-    model = Cliente
-    queryset = Cliente.objects.all()
-
+    def get_success_url(self):
+        return reverse("cliente:cliente_list")

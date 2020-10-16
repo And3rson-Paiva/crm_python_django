@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .models import Cliente
 from .forms import ClienteForm
 from django.urls import reverse
@@ -36,3 +36,13 @@ class ClienteUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('cliente:cliente_list')
+
+
+class ClienteDeleteView(DeleteView):
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Cliente, id=id)
+
+    def get_success_url(self):
+        return reverse('cliente:cliente_list')
+

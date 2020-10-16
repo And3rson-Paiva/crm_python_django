@@ -30,3 +30,6 @@ class Cliente(models.Model):
 
     def get_absolute_url(self):
         return reverse('cliente:cliente_update', kwargs={'id': self.id})
+
+    def get_delete_url(self):
+        return reverse('cliente:cliente_delete', kwargs={'id': self.id})

@@ -22,7 +22,9 @@
               <td>{{ cliente.retorna_cidade_completa }}</td>
               <td>{{ cliente.retorna_telefone }}</td>
               <td>{{ cliente.email }}</td>
-              <td><button type='button' class="btn btn-danger">Excluir</button></td>
+                <form method="POST" action="{{ cliente.get_delete_url }}">{% csrf_token %}
+                    <td><button type='submit' class="btn btn-danger">Excluir</button></td>
+                </form>
             </tr>
         {% endfor %}
       </tbody>

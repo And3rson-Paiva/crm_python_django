@@ -17,4 +17,11 @@ class Cliente(models.Model):
     def __str__(self):
         return f'{self.primeiro_nome} {self.ultimo_nome}'
 
+    def retorna_telefone(self):
+        return f'({self.codigo_area}) {self.numero_telefone}'
 
+    def retorna_nome_completo(self):
+        return f'{self.primeiro_nome} {self.ultimo_nome}'
+
+    def retorna_cidade_completa(self):
+        return f'{self.estado} - {self.cidade}'

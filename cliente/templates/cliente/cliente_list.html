@@ -14,10 +14,11 @@
       <tbody>
         {% for cliente in cliente_list %}
             <tr>
-              <td>{{ cliente.primeiro_nome }} {{ cliente.ultimo_nome }}</td>
-              <td>{{ cliente.cidade }}</td>
-              <td>{{ cliente.telefone }}</td>
+              <td>{{ cliente.retorna_nome_completo}}</td>
+              <td>{{ cliente.retorna_cidade_completa }}</td>
+              <td>{{ cliente.retorna_telefone }}</td>
               <td>{{ cliente.email }}</td>
+              <td><button type='button' class="btn btn-danger">Excluir</button></td>
             </tr>
         {% endfor %}
       </tbody>

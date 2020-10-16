@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from .models import Cliente
 from .forms import ClienteForm
 from django.urls import reverse
+from django.shortcuts import get_object_or_404
 
 
 class ClienteListView(ListView):
@@ -21,3 +21,18 @@ class ClienteCreateView(CreateView):
 
     def get_success_url(self):
         return reverse("cliente:cliente_list")
+
+
+class ClienteUpdateView(UpdateView):
+    template_name = 'cliente/cliente.html'
+    form_class = ClienteForm
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Cliente, id=id)
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('cliente:cliente_list')

@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class Cliente(models.Model):
     primeiro_nome = models.CharField(max_length=30)
@@ -25,3 +27,6 @@ class Cliente(models.Model):
 
     def retorna_cidade_completa(self):
         return f'{self.estado} - {self.cidade}'
+
+    def get_absolute_url(self):
+        return reverse('cliente:cliente_update', kwargs={'id': self.id})

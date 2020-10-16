@@ -18,7 +18,7 @@
       <tbody>
         {% for cliente in cliente_list %}
             <tr>
-              <td>{{ cliente.retorna_nome_completo}}</td>
+              <td><a href="{{ cliente.get_absolute_url }}">{{ cliente.retorna_nome_completo}}</a></td>
               <td>{{ cliente.retorna_cidade_completa }}</td>
               <td>{{ cliente.retorna_telefone }}</td>
               <td>{{ cliente.email }}</td>

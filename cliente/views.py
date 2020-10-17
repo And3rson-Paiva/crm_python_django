@@ -9,7 +9,7 @@ from django.db.models import Q
 
 class ClienteListView(ListView):
     template_name = "cliente/cliente_list.html"
-    paginate_by = 2
+    paginate_by = 5
     model = Cliente
 
     def get_queryset(self):
